@@ -1,0 +1,47 @@
+.card {
+  background: rgba(12, 8, 32, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(140, 120, 255, 0.18);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, transparent 50%);
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+.card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e2e8f0;
+}
+.card h4 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #a78bfa;
+  margin: 0.75rem 0 0.4rem;
+}
+.card p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-bottom: 0.3rem;
+}
+.card small { font-size: 0.78rem; color: #64748b; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}

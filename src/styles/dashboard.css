@@ -1,0 +1,78 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-card {
+  background: rgba(15, 10, 35, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(140, 120, 255, 0.2);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.25);
+}
+.dashboard-card h3 {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+.dashboard-card .card-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #e2e8f0;
+  line-height: 1;
+}
+
+.dashboard-card--active {
+  border-color: rgba(140, 120, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.4), 0 8px 32px rgba(124, 58, 237, 0.25);
+}
+
+.card-hint {
+  font-size: 0.7rem;
+  color: #7c6aff;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dashboard-panel {
+  background: rgba(15, 10, 35, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(140, 120, 255, 0.2);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 0.5rem;
+  animation: panelFadeIn 0.25s ease;
+}
+
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  margin-bottom: 1.25rem;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

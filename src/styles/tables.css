@@ -1,0 +1,30 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(12, 8, 32, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+.data-table th {
+  background: rgba(124, 58, 237, 0.15);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #a78bfa;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+}
+.data-table td {
+  padding: 0.85rem 1rem;
+  border-top: 1px solid rgba(100, 116, 139, 0.12);
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+.data-table tr:hover td {
+  background: rgba(124, 58, 237, 0.07);
+}
