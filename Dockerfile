@@ -4,6 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+# API calls go through nginx proxy at /api
+ENV VITE_API_URL=/api
 RUN npm run build
 
 # Stage 2: Serve with Nginx
