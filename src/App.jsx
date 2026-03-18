@@ -12,7 +12,9 @@ import './styles/cards.css';
 const App = () => (
   <AuthProvider>
     <GalaxyBackground />
-    <AppRouter />
+    <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh' }}>
+      <AppRouter />
+    </div>
   </AuthProvider>
 );
 
