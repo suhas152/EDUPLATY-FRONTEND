@@ -1,16 +1,147 @@
-# React + Vite
+EduPlaty – DevOps Enabled Educational Evaluation Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack educational platform with a production-grade CI/CD pipeline, containerization using Docker, and orchestration via Kubernetes.
 
-Currently, two official plugins are available:
+📌 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+EduPlaty is an end-to-end Educational Project Evaluation Platform designed to streamline:
 
-## React Compiler
+👨‍🏫 Teacher-based project evaluation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+👨‍🎓 Student submissions & tracking
 
-## Expanding the ESLint configuration
+🧑‍💼 Admin-controlled workflows
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📊 Structured grading & feedback system
+
+This project is enhanced with a complete DevOps lifecycle, ensuring scalability, automation, and high availability.
+
+🧱 Tech Stack
+🔹 Backend
+
+Java + Spring Boot
+
+Hibernate / JPA
+
+MySQL
+
+🔹 Frontend
+
+React.js
+
+Axios
+
+Bootstrap
+
+🔹 DevOps & Cloud
+
+Docker 🐳
+
+Kubernetes ☸️
+
+Jenkins ⚙️
+
+GitHub (Version Control)
+
+⚙️ Key Features
+
+🔐 Role-based authentication (Admin / Teacher / Student)
+
+📁 Project & team management
+
+📝 Evaluation templates with grading criteria
+
+📊 Marks tracking & reporting
+
+🔁 Automated CI/CD pipeline
+
+📦 Containerized microservices
+
+☁️ Scalable Kubernetes deployment
+
+🔄 CI/CD Pipeline Architecture
+        Developer Push (GitHub)
+                 ↓
+           Jenkins Pipeline
+                 ↓
+        Build (Maven / npm)
+                 ↓
+        Run Tests (Optional)
+                 ↓
+        Build Docker Images
+                 ↓
+        Push to Docker Hub
+                 ↓
+        Deploy to Kubernetes
+                 ↓
+         Application Live 🚀
+🐳 Docker Setup
+Build Images
+# Backend
+docker build -t eduplaty-backend .
+
+# Frontend
+docker build -t eduplaty-frontend .
+Run Containers
+docker run -d -p 8080:8080 eduplaty-backend
+docker run -d -p 3000:3000 eduplaty-frontend
+☸️ Kubernetes Deployment
+Apply Kubernetes Configs
+kubectl apply -f k8s/
+Components
+
+Deployment (Backend & Frontend)
+
+Services (ClusterIP / NodePort)
+
+ConfigMaps & Secrets
+
+Persistent Volume (MySQL)
+
+📂 Project Structure
+EduPlaty/
+│
+├── backend/              # Spring Boot Application
+├── frontend/             # React App
+├── k8s/                  # Kubernetes YAML files
+├── docker/               # Dockerfiles
+├── jenkins/              # Jenkins Pipeline (Jenkinsfile)
+└── README.md
+🔐 Environment Variables
+
+Create .env or configure in Kubernetes:
+
+DB_HOST=your-db-host
+DB_USER=root
+DB_PASSWORD=your-password
+JWT_SECRET=your-secret
+📸 Screenshots (Optional)
+
+Add UI screenshots here to increase impact
+
+🚀 How to Run Locally
+# Clone repo
+git clone https://github.com/your-username/eduplaty.git
+
+# Backend
+cd backend
+mvn spring-boot:run
+
+# Frontend
+cd frontend
+npm install
+npm start
+📈 Future Enhancements
+
+🔔 Real-time notifications (WebSockets)
+
+🤖 AI-based evaluation suggestions
+
+📊 Advanced analytics dashboard
+
+☁️ Cloud deployment (AWS/GCP)
+
+🙌 Contribution
+
+Contributions are welcome! Feel free to fork and submit PRs.
+<img width="1919" height="1022" alt="Screenshot 2026-03-18 142204" src="https://github.com/user-attachments/assets/203131ae-fe53-4275-b5c5-4b366bcf3ab8" />
