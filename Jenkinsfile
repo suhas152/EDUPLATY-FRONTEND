@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKERHUB_CREDS = credentials('dockerhub-credentials')
         IMAGE            = "${DOCKERHUB_CREDS_USR}/eduplaty-frontend"
-        KUBECONFIG_FILE  = credentials('kubeconfig')
     }
 
     stages {
@@ -17,39 +16,36 @@ pipeline {
 
         stage('Install & Build') {
             steps {
-                sh 'npm ci'
-                sh 'npm run build'
+                bat 'npm ci'
+                bat 'npm run build'
             }
         }
 
         stage('Docker Build & Push') {
             steps {
-                sh """
-                    echo ${DOCKERHUB_CREDS_PSW} | docker login -u ${DOCKERHUB_CREDS_USR} --password-stdin
-                    docker build -t ${IMAGE}:${BUILD_NUMBER} -t ${IMAGE}:latest .
-                    docker push ${IMAGE}:${BUILD_NUMBER}
-                    docker push ${IMAGE}:latest
-                """
+                bat "docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%"
+                bat "docker build -t %IMAGE%:%BUILD_NUMBER% -t %IMAGE%:latest ."
+                bat "docker push %IMAGE%:%BUILD_NUMBER%"
+                bat "docker push %IMAGE%:latest"
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                    sh """
-                        kubectl set image deployment/eduplaty-frontend \
-                            eduplaty-frontend=${IMAGE}:${BUILD_NUMBER} \
-                            -n eduplaty
-                        kubectl rollout status deployment/eduplaty-frontend -n eduplaty --timeout=120s
-                    """
+                    bat "kubectl set image deployment/eduplaty-frontend eduplaty-frontend=%IMAGE%:%BUILD_NUMBER% -n eduplaty"
+                    bat "kubectl rollout status deployment/eduplaty-frontend -n eduplaty --timeout=120s"
                 }
             }
         }
     }
 
     post {
-        success { echo "Frontend deployed — build #${BUILD_NUMBER}" }
-        failure { echo "Frontend pipeline failed" }
-        always  { sh 'docker logout || true' }
+        success {
+            echo "Frontend deployed successfully — build #${BUILD_NUMBER}"
+        }
+        failure {
+            echo "Frontend pipeline failed — check logs above"
+        }
     }
 }
